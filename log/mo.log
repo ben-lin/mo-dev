@@ -1,0 +1,13 @@
+[2015-03-07 00:30:48.932] [INFO] [default] - Setting logger
+[2015-03-07 00:30:49.104] [INFO] [default] - Loading middleware: logger
+[2015-03-07 00:30:49.106] [INFO] [default] - Loading middleware: requestId
+[2015-03-07 00:30:49.109] [INFO] [default] - Loading middleware: view
+[2015-03-07 00:30:49.160] [INFO] [default] - Loading middleware: cors
+[2015-03-07 00:30:49.161] [INFO] [default] - Loading middleware: session
+[2015-03-07 00:30:49.216] [INFO] [default] - Loading middleware: bodyParser
+[2015-03-07 00:30:49.238] [INFO] [default] - Loading middleware: validator
+[2015-03-07 00:30:49.247] [INFO] [default] - Loading middleware: router
+[2015-03-07 00:30:49.257] [INFO] [default] - Loading middleware: static
+[2015-03-07 00:30:49.280] [INFO] [default] - Loading adapter: default
+[2015-03-07 00:30:49.343] [INFO] [default] - Loading adapter: postgres
+[2015-03-07 00:30:49.351] [INFO] [default] - Database connected

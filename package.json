@@ -1,0 +1,28 @@
+{
+  "name": "mo",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bytes"               : "2.0.0",
+    "grant"               : "3.2.0",
+    "js-yaml"             : "3.3.0",
+    "koa"                 : "0.19.1",
+    "koa-better-body"     : "1.0.17",
+    "koa-generic-session" : "1.8.0",
+    "koa-redis"           : "1.0.0",
+    "koa-request-id"      : "1.0.1",
+    "koa-router"          : "4.3.2",
+    "koa-static"          : "1.4.9",
+    "koa-validate"        : "0.2.11",
+    "koa-views"           : "3.0.0",
+    "log4js"              : "0.6.24",
+    "log4js-node-mongodb" : "0.1.2",
+    "pg"                  : "4.3.0",
+    "pg-hstore"           : "2.3.2",
+    "sequelize"           : "2.1.0",
+    "swig"                : "1.4.2"
+  },
+  "devDependencies": {
+    "koa-cors" : "0.0.14"
+  }
+}

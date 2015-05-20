@@ -1,0 +1,76 @@
+appname: mo
+
+server:
+  host: 0.0.0.0
+  port: 3000
+  timezone: UTC
+  baseUrl: http://0.0.0.0:3000/
+
+database:
+  sequelize:
+    database: mo
+    username: ben
+    password:
+    options:
+      dialect: postgres
+      host: localhost
+      port: 5432
+      timezone:
+      pool:
+        max: 5
+        min: 0
+        idle: 10000
+  mongoose:
+    database: bee-dev
+    # optional
+    username:
+    # optional
+    password:
+    # optional, default: localhost
+    host:
+    # optional, default: 27017
+    port:
+  # redis:
+  #   database:
+  #   password:
+  #   host:
+  #   port:
+  #   socket:
+
+cookie: 2e798a6dlDTG69xkdQa93313dc222b5763a62ba6
+
+session:
+  redis:
+    host:
+    port:
+    socket:
+    db:
+    pass:
+
+logger:
+  appenders:
+    console: true
+    # file:
+    #   filename:
+    #   maxLogSize:
+    #   backups:
+    # mongodb: localhost:27017/logs
+  verbose: ture
+  level: info
+
+middlewares:
+  - logger
+  # - err500
+  - requestId
+  # - view
+  # - cors
+  # - session
+  # - bodyParser
+  # - validator
+  - router
+  - static
+
+libs:
+
+modules:
+  - general
