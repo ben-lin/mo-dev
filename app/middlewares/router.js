@@ -8,7 +8,7 @@
 /**
  * Module dependencies
  */
-var router = require( 'koa-router' );
+var router = require('koa-router');
 
 /**
  * @description Load router middleware
@@ -21,6 +21,6 @@ var router = require( 'koa-router' );
  *  var app = koa();
  *  loadRouterMiddleware( app );
  */
-module.exports = function loadRouterMiddleware( app ){
-  app.use( router( app ));
+module.exports = function loadRouterMiddleware(app) {
+  app.use(router(app));
 };

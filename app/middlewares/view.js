@@ -8,8 +8,8 @@
 /**
  * Module dependencies
  */
-var view = require( 'koa-views' );
-var swig = require( 'swig' );
+var view = require('koa-views');
+var swig = require('swig');
 
 /**
  * @description Setup and load view middleware
@@ -22,6 +22,10 @@ var swig = require( 'swig' );
  *  var app = koa();
  *  viewMiddleware( app );
  */
-module.exports = function loadViewMiddleware( app ){
-  app.use( view( 'views', { map : { html : swig }}));
+module.exports = function loadViewMiddleware(app) {
+  app.use(view('views', {
+    map: {
+      html: swig
+    }
+  }));
 };

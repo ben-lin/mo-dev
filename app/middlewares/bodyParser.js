@@ -8,7 +8,7 @@
 /**
  * Module dependencies
  */
-var body = require( 'koa-better-body' );
+var body = require('koa-better-body');
 
 /**
  * @description Setup and load bodyParser middleware
@@ -22,9 +22,11 @@ var body = require( 'koa-better-body' );
  *  var app = koa();
  *  loadBodyParserMiddleware( app );
  */
-module.exports = function loadBodyParserMiddleware( app ){
-  app.use( body({
-    multipart : true,
-    formidable: { uploadDir: app.config.dir.tmp }
+module.exports = function loadBodyParserMiddleware(app) {
+  app.use(body({
+    multipart: true,
+    formidable: {
+      uploadDir: app.config.dir.tmp
+    }
   }));
 };

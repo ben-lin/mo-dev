@@ -11,7 +11,7 @@
  * @function
  * @returns {Function} err500Middleware
  */
-function err500(){
+function err500() {
   /**
    * @description err500 middleware
    * @public
@@ -19,14 +19,14 @@ function err500(){
    * @param {Function} next - Next middleware
    * @this Koa Context
    */
-  return function* err500Middleware( next ){
-    try{
+  return function* err500Middleware(next) {
+    try {
       yield next;
-    }catch( err ){
+    } catch (err) {
       this.status = err.status || 500;
-      this.body   = err.message;
+      this.body = err.message;
 
-      this.app.emit( 'error', err, this );
+      this.app.emit('error', err, this);
     }
   };
 };
@@ -42,6 +42,6 @@ function err500(){
  *  var app = koa();
  *  loadErr500Middleware( app );
  */
-module.exports = function loadErr500Middleware( app ){
-  app.use( err500());
+module.exports = function loadErr500Middleware(app) {
+  app.use(err500());
 };

@@ -8,8 +8,8 @@
 /**
  * Module dependencies
  */
-var session    = require( 'koa-generic-session' );
-var redisStore = require( 'koa-redis' );
+var session = require('koa-generic-session');
+var redisStore = require('koa-redis');
 
 /**
  * @description Setup and load session middleware
@@ -28,14 +28,16 @@ var redisStore = require( 'koa-redis' );
  *  var app = koa();
  *  loadSessionMiddleware( app );
  */
-module.exports = function loadSessionMiddleware( app ){
+module.exports = function loadSessionMiddleware(app) {
   var config = app.config.session.redis;
 
-  app.use( session({ store : redisStore({
-    host   : config.host,
-    port   : config.port,
-    socket : config.socket,
-    db     : config.db,
-    pass   : config.pass
-  })}));
+  app.use(session({
+    store: redisStore({
+      host: config.host,
+      port: config.port,
+      socket: config.socket,
+      db: config.db,
+      pass: config.pass
+    })
+  }));
 };

@@ -8,7 +8,7 @@
 /**
  * Module dependencies
  */
-var static = require( 'koa-static' );
+var static = require('koa-static');
 
 /**
  * @description Setup and load static middleware
@@ -22,6 +22,6 @@ var static = require( 'koa-static' );
  *  var app = koa();
  *  LoadStaticMiddleware( app );
  */
-module.exports = function LoadStaticMiddleware( app ){
-  app.use( static( app.config.dir.public ));
+module.exports = function LoadStaticMiddleware(app) {
+  app.use(static(app.config.dir.public));
 };

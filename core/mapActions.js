@@ -1,8 +1,8 @@
 'use strick';
 
-module.exports = function mapActions( app ){
+module.exports = function mapActions(app) {
   var logger = app.logger;
-  logger.info( 'Mapping actions' );
+  logger.info('Mapping actions');
 
   var methods = [
     'HEAD',

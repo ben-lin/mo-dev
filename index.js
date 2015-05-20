@@ -10,26 +10,26 @@
 /**
  * Module dependencies
  */
-var app = require( './core/app' );
+var app = require('./core/app');
 
 /**
  * @description connectDatabase success callback
  * @private
  * @function
  */
-app.connectDatabase( function connectDatabaseCallback(){
+app.connectDatabase(function connectDatabaseCallback() {
   var config = app.config.server;
   var logger = app.logger;
 
-  logger.info([ 'Starting server at: ', config.host, ':', config.port ].join( '' ));
+  logger.info(['Starting server at: ', config.host, ':', config.port].join(''));
 
   /**
    * @description Start the server; listen to host and port
    * @private
    * @function
    */
-  app.listen( config.port, config.host, function serverStartedCallback(){
-    logger.info( 'You are ready to rock!' );
+  app.listen(config.port, config.host, function serverStartedCallback() {
+    logger.info('You are ready to rock!');
 
     // auto execute libs after server start
   });

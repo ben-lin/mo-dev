@@ -12,13 +12,13 @@
 /**
  * Module dependencies
  */
-var koa = require( 'koa' );
+var koa = require('koa');
 
 var app = koa();
-require( './setConfig' )( app );
-require( './setLogger' )( app );
-require( './buildModels' )( app );
-require( './loadLibs' )( app );
-require( './LoadMiddlewares' )( app );
-require( './mapActions' )( app );
+require('./setConfig')(app);
+require('./setLogger')(app);
+require('./buildModels')(app);
+require('./loadLibs')(app);
+require('./LoadMiddlewares')(app);
+require('./mapActions')(app);
 module.exports = app;

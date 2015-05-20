@@ -8,7 +8,7 @@
 /**
  * Module dependencies
  */
-var validator = require( 'koa-validate' );
+var validator = require('koa-validate');
 
 /**
  * @description Load validator middleware
@@ -21,6 +21,6 @@ var validator = require( 'koa-validate' );
  *  var app = koa();
  *  loadValidatorMiddleware( app );
  */
-module.exports = function loadValidatorMiddleware( app ){
-  app.use( validator());
+module.exports = function loadValidatorMiddleware(app) {
+  app.use(validator());
 };

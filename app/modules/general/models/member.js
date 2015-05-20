@@ -1,34 +1,73 @@
-module.exports = function buildMemberModel( app ){
+module.exports = function buildMemberModel(app) {
   var mongoose = app.mongoose;
-  var Schema   = mongoose.Schema;
+  var Schema = mongoose.Schema;
   var ObjectId = Schema.ObjectId;
 
   return {
-    adapter : 'mongoose',
-    fields : {
+    adapter: 'mongoose',
+    fields: {
       // teamId + userId
-      uid         : { type: ObjectId, required: true, ref: 'User' },
-      teamId      : { type: ObjectId, required: true, ref: 'Team' },
-      userId      : { type: ObjectId, required: true, ref: 'User' },
+      uid: {
+        type: ObjectId,
+        required: true,
+        ref: 'User'
+      },
+      teamId: {
+        type: ObjectId,
+        required: true,
+        ref: 'Team'
+      },
+      userId: {
+        type: ObjectId,
+        required: true,
+        ref: 'User'
+      },
       // shortname + teamId
-      shortnameUid: { type: String, required: true, unique: true },
-      isJoined    : { type: Boolean, default: false },
-      shortname   : { type: String, required: true },
-      shortnameUat: { type: Number, default: Date.now },
-      role        : { type: String, default: 'viewer' }, // admin|normal|viewer
-      roleUat     : { type: Number, default: Date.now },
-      createdAt   : { type: Number, default: Date.now },
-      updatedAt   : { type: Number, default: Date.now }
+      shortnameUid: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      isJoined: {
+        type: Boolean,
+        default: false
+      },
+      shortname: {
+        type: String,
+        required: true
+      },
+      shortnameUat: {
+        type: Number,
+        default: Date.now
+      },
+      role: {
+        type: String,
+        default: 'viewer'
+      }, // admin|normal|viewer
+      roleUat: {
+        type: Number,
+        default: Date.now
+      },
+      createdAt: {
+        type: Number,
+        default: Date.now
+      },
+      updatedAt: {
+        type: Number,
+        default: Date.now
+      }
     },
 
-    opts : {
+    opts: {
       virtual: {
-        get: { propName: function ( val ){}},
+        get: {
+          propName: function (val) {}
+        },
         set: {}
       },
 
       validate: {
-        propName: function ( val ){}
+        propName: function (val) {}
       },
 
       hooks: {
@@ -48,7 +87,7 @@ module.exports = function buildMemberModel( app ){
       },
 
       // classMethods
-      statics : {},
+      statics: {},
 
       // instanceMethods
       methods: {}

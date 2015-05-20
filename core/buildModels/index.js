@@ -62,40 +62,40 @@ var modelMap = {};
  * @param {Object} app.config.db - Database configuration
  * @example
  */
-module.exports = function buildModels( app ){
+module.exports = function buildModels(app) {
   /**
    * Module dependencies
    */
-  var fs     = require( 'fs' );
-  var path   = require( 'path' );
+  var fs = require('fs');
+  var path = require('path');
   var logger = app.logger;
 
-  logger.info( 'Building models' );
+  logger.info('Building models');
 
   var moduleNames = app.config.modules;
-  if( moduleNames && moduleNames.length ){
-    moduleNames.forEach( function ( moduleName ){
-      var modelDirPath = path.resolve( app.config.dir.modules, moduleName, 'models' );
-      try{
-        var modelNames = fs.readdirSync( modelDirPath );
-        if( modelNames && modelNames.length ){
-          modelNames.forEach( function ( modelName ){
-            if( /\.js$/.test( modelName )){
-              var key = modelName.replace( '.js', '' );
-              var modelPath = path.resolve( modelDirPath, modelName );
-              var tmp = require( modelPath );
+  if (moduleNames && moduleNames.length) {
+    moduleNames.forEach(function (moduleName) {
+      var modelDirPath = path.resolve(app.config.dir.modules, moduleName, 'models');
+      try {
+        var modelNames = fs.readdirSync(modelDirPath);
+        if (modelNames && modelNames.length) {
+          modelNames.forEach(function (modelName) {
+            if (/\.js$/.test(modelName)) {
+              var key = modelName.replace('.js', '');
+              var modelPath = path.resolve(modelDirPath, modelName);
+              var tmp = require(modelPath);
               // TODO: merge and show warning
-              modelMap[ key ] = tmp;
+              modelMap[key] = tmp;
             }
           })
         }
-      }catch( error ){
-        logger.error( 'Path not found when loading models.\nPath: ' + modelDirPath );
-        process.exit( 1 );
+      } catch (error) {
+        logger.error('Path not found when loading models.\nPath: ' + modelDirPath);
+        process.exit(1);
       }
     });
-  }else{
-    logger.warn( 'No modules found when loading models' );
+  } else {
+    logger.warn('No modules found when loading models');
   }
 
 
@@ -105,29 +105,29 @@ module.exports = function buildModels( app ){
    * @public
    * @function
    */
-  app.connectDatabases = function connectDatabases( callback ){
+  app.connectDatabases = function connectDatabases(callback) {
     var dbs = app.config.db;
 
-    if( !dbs || !dbs.length ){
-      logger.info( 'No database configuration found in `config/' + app.env + '`' );
-      process.exit( 1 );
+    if (!dbs || !dbs.length) {
+      logger.info('No database configuration found in `config/' + app.env + '`');
+      process.exit(1);
     }
 
     // connect all db
-    dbs.forEach( function (){
+    dbs.forEach(function () {
 
     });
 
-    orm.initialize( ormConfig, function ormInitializedCallback( err, models ){
-      if( err ){
-        logger.error( 'Having trouble connecting database', '\n', err );
+    orm.initialize(ormConfig, function ormInitializedCallback(err, models) {
+      if (err) {
+        logger.error('Having trouble connecting database', '\n', err);
         throw err;
       }
 
       // Attach models to `mo` instance
       app.models = models;
 
-      logger.info( 'Database connected' );
+      logger.info('Database connected');
 
       callback();
     });

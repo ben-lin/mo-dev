@@ -24,18 +24,18 @@
  *  var app = koa();
  *  loadMiddlewares( app );
  */
-module.exports = function loadMiddlewares( app ){
+module.exports = function loadMiddlewares(app) {
   /**
    * Module dependencies
    */
-  var path   = require( 'path' );
+  var path = require('path');
   var logger = app.logger;
 
-  logger.info( 'Loading middlewares' );
+  logger.info('Loading middlewares');
 
   var middlewares = app.config.middlewares;
-  if( !middlewares || !middlewares.length ){
-    return logger.warn( 'No middlewares found' );;
+  if (!middlewares || !middlewares.length) {
+    return logger.warn('No middlewares found');;
   }
 
   /**
@@ -44,10 +44,10 @@ module.exports = function loadMiddlewares( app ){
    * @function
    * @param {String} middleware - Middleware name
    */
-  middlewares.forEach( function middlewareLoader( middleware ){
-    logger.info( 'Loading middleware: ' + middleware );
-    require( path.resolve( app.config.dir.middlewares, middleware ))( app );
+  middlewares.forEach(function middlewareLoader(middleware) {
+    logger.info('Loading middleware: ' + middleware);
+    require(path.resolve(app.config.dir.middlewares, middleware))(app);
   });
 
-  logger.info( 'All middlewares loaded' );
+  logger.info('All middlewares loaded');
 };

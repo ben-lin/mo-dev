@@ -8,7 +8,7 @@
 /**
  * Module dependencies
  */
-var requestId = require( 'koa-request-id' );
+var requestId = require('koa-request-id');
 
 /**
  * @description Load requestId middleware
@@ -21,6 +21,6 @@ var requestId = require( 'koa-request-id' );
  *  var app = koa();
  *  loadRequestIdMiddleware( app );
  */
-module.exports = function loadRequestIdMiddleware( app ){
-  app.use( requestId());
+module.exports = function loadRequestIdMiddleware(app) {
+  app.use(requestId());
 };

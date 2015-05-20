@@ -8,7 +8,7 @@
 /**
  * Module dependencies
  */
-var cors = require( 'koa-cors' );
+var cors = require('koa-cors');
 
 /**
  * @description Load cors middleware
@@ -21,6 +21,6 @@ var cors = require( 'koa-cors' );
  *  var app = koa();
  *  loadCorsMiddleware( app );
  */
-module.exports = function loadCorsMiddleware( app ){
-  app.use( cors());
+module.exports = function loadCorsMiddleware(app) {
+  app.use(cors());
 };

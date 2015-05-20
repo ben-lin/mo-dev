@@ -8,8 +8,8 @@
 /**
  * Module dependencies
  */
-var util  = require( 'util' );
-var bytes = require( 'bytes' );
+var util = require('util');
+var bytes = require('bytes');
 
 /**
  * @description Setup logger middleware
@@ -18,7 +18,7 @@ var bytes = require( 'bytes' );
  * @param {Object} app.logger - Logger instance
  * @returns {Object} koaLog4jsMiddleware
  */
-function koaLog4js( app ){
+function koaLog4js(app) {
   var logger = app.logger;
 
   /**
@@ -28,8 +28,8 @@ function koaLog4js( app ){
    * @param {Number} startTime - Request started timestamp
    * @returns {String} The timestamp difference in `ms`
    */
-  function timeDiff( startTime ){
-    return ( Date.now() - startTime ) + 'ms';
+  function timeDiff(startTime) {
+    return (Date.now() - startTime) + 'ms';
   }
 
   /**
@@ -39,68 +39,70 @@ function koaLog4js( app ){
    * @param {Function} next - Next middleware
    * @this Koa Context
    */
-  return function* koaLog4jsMiddleware( next ){
-    var config    = this.app.config.logger;
+  return function* koaLog4jsMiddleware(next) {
+    var config = this.app.config.logger;
     var startTime = Date.now();
-    var req       = this.request;
-    var res       = this.response;
-    var header    = req.header;
-    var nodeReq   = this.req;
-    var pid       = process.pid;
-    var ip        = nodeReq.connection.remoteAddress || headers[ 'x-forwarded-for' ];
-    var agent     = req.header[ 'user-agent' ];
+    var req = this.request;
+    var res = this.response;
+    var header = req.header;
+    var nodeReq = this.req;
+    var pid = process.pid;
+    var ip = nodeReq.connection.remoteAddress || headers['x-forwarded-for'];
+    var agent = req.header['user-agent'];
     var time;
     var log;
 
-    if( config && config.verbose === true ){
+    if (config && config.verbose === true) {
       log = {
-        pid : pid,
-        req : {
-          id     : undefined,
-          ip     : ip,
-          method : req.method,
-          url    : req.url,
-          header : header
+        pid: pid,
+        req: {
+          id: undefined,
+          ip: ip,
+          method: req.method,
+          url: req.url,
+          header: header
         }
       };
 
-      try{
+      try {
         yield next;
-      }catch( err ){
+      } catch (err) {
         // log uncaught downstream errors
         log.error = err.stack;
-        logger.error( '\n', log );
+        logger.error('\n', log);
         throw err;
       }
 
-      if( this.id )  log.req.id   = this.id;
-      if( req.body ) log.req.body = req.body;
+      if (this.id) log.req.id = this.id;
+      if (req.body) log.req.body = req.body;
 
       log.res = {
-        status : res.status,
-        time   : timeDiff( startTime ),
-        header : res.header,
-        body   : res.body
+        status: res.status,
+        time: timeDiff(startTime),
+        header: res.header,
+        body: res.body
       };
 
-      logger.info( '\n', util.inspect( log, { /*colors : true,*/ depth : null }), '\n' );
-    }else{
-      try{
+      logger.info('\n', util.inspect(log, { /*colors : true,*/
+        depth: null
+      }), '\n');
+    } else {
+      try {
         yield next;
-      }catch( err ){
-        time = timeDiff( startTime );
-        log  = [ ip, req.method, req.url, 500, time, agent, '\n' ].join( ' ' );
+      } catch (err) {
+        time = timeDiff(startTime);
+        log = [ip, req.method, req.url, 500, time, agent, '\n'].join(' ');
 
         // log uncaught downstream errors
-        logger.error( log, err.stack );
+        logger.error(log, err.stack);
         throw err;
       }
 
-      var len = bytes( Number( res.header[ 'content-length' ]));
-      time    = timeDiff( startTime );
-      log     = [ ip, req.method, req.url, res.status, time, len, agent ].join( ' ' );
+      var len = bytes(Number(res.header['content-length']));
+      time = timeDiff(startTime);
+      log = [ip, req.method, req.url, res.status, time, len, agent].join(' ');
 
-      logger.info( log );
+      logger.info(log);
     }
   };
 }
@@ -116,6 +118,6 @@ function koaLog4js( app ){
  *  var app = koa();
  *  loadLoggerMiddleware( app );
  */
-module.exports = function loadLoggerMiddleware( app ){
-  app.use( koaLog4js( app ));
+module.exports = function loadLoggerMiddleware(app) {
+  app.use(koaLog4js(app));
 };

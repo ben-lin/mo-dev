@@ -1,6 +1,6 @@
 'use strick';
 
-module.exports = function LoadLibs( app ){
+module.exports = function LoadLibs(app) {
   var logger = app.logger;
-  logger.info( 'Loading libs' );
+  logger.info('Loading libs');
 };
